@@ -1,0 +1,24 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+      <div class="col s12">
+        <a href="" class="breadcrumb">Github Users</a>
+        <a href="" class="breadcrumb"><%= @github_user.username %></a>
+      </div>
+    </div>
+</nav>
+<div class="container">
+    <h2 class="header">Repositories</h2>
+    <ul class="collection">
+        <% @github_user.github_repos.each do |repo| %>
+            <li class="collection-item">
+                <div>
+                    <a href="github_repos/<%= repo.repo %>" target="_blank"><%= repo.repo %></a>
+                    <span class="secondary-content" style="color:<%= language_color(repo.repo_language) %>"><%= repo.repo_language %></span>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>

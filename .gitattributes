@@ -1,0 +1,5 @@
+db/schema.rb linguist-generated
+
+vendor/* linguist-vendored
+
+* text=auto eol=lf

@@ -1,0 +1,38 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+      <div class="col s12">
+        <a href="../.." class="breadcrumb">Github Users</a>
+        <a href="../" class="breadcrumb"><%= @github_user.username %></a>
+        <a href="" class="breadcrumb"><%= @github_repo.repo %></a>
+      </div>
+    </div>
+</nav>
+
+<div class="card-panel">
+  <h3 class="blue-grey-text text-darken-2" style="size:"><%= @github_repo.repo %></h3>
+  <p>By <%= @github_user.username %></p><br>
+  <h5><%= @github_repo.description %></h5><br>
+  <blockquote class="flow-text"><%= @github_repo.repo_language %></blockquote><br>
+  <div class="viewer-count">
+    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="24" height="24">
+    <span id="count"><%= @github_repo.repo_views %></span>
+  </div><br>
+  <a href="<%= @github_repo.url %>" target="_blank">View on Github</a>
+</div>
+
+<style>
+    .viewer-count {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .viewer-count img {
+        width: 24px;
+        height: 24px;
+    }
+</style>

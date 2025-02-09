@@ -1,0 +1,43 @@
+<div>
+    <h2>Github Account Fetcher</h2>
+    <p style="color: green"><%= notice %></p>
+    <%= form_tag '/github_users', method: :post do %>
+        Load repos for Github Username: <%= text_field_tag :username %><br>
+
+        <%= submit_tag("Load User Repos", class: "waves-effect waves-light btn") %>
+    <% end %>
+    <br>
+    <%= form_tag '/github_users', method: :delete do %>
+        Delete Repos via Username: <%= select_tag :username, options_for_select(username_options) %><br>
+        
+        <%= submit_tag("Delete User Repos", class: "waves-effect waves-light btn") %>
+    <% end %>
+
+    
+
+    <br><br>
+    <% if @github_users.present? %>
+        <% @github_users.each do |github_user| %>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title"><%= link_to(github_user.username, github_user_github_repos_path(github_user.username), class: "white-text") %> | <%= github_user.location %></span>
+                            <% if not github_user.description.blank? %>
+                                <p><%= github_user.description %></p>
+                            <% end %>
+                            </div>
+                            <div class="card-action">
+                            <% github_user.github_repos.order('LOWER(repo) ASC').each do |repo| %>
+                                <%= link_to(repo.repo, github_user_github_repo_path(github_user.username, repo.repo)) %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+
+
