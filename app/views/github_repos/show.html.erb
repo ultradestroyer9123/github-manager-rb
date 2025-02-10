@@ -13,6 +13,7 @@
 
 <div class="card-panel">
   <h3 class="blue-grey-text text-darken-2" style="size:"><%= @github_repo.repo %></h3>
+  <img src="<%= @github_user.avatar_url %>" alt="Avatar" width="50" height="50" style="vertical-align: middle; margin-right: 10px;">
   <p>By <%= @github_user.username %></p><br>
   <h5><%= @github_repo.description %></h5><br>
   <blockquote class="flow-text"><%= @github_repo.repo_language %></blockquote><br>
@@ -22,17 +23,3 @@
   </div><br>
   <a href="<%= @github_repo.url %>" target="_blank">View on Github</a>
 </div>
-
-<style>
-    .viewer-count {
-        font-size: 24px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .viewer-count img {
-        width: 24px;
-        height: 24px;
-    }
-</style>

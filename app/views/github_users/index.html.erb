@@ -7,12 +7,15 @@
         <%= submit_tag("Load User Repos", class: "waves-effect waves-light btn") %>
     <% end %>
     <br>
-    <%= form_tag '/github_users', method: :delete do %>
-        Delete Repos via Username: <%= select_tag :username, options_for_select(username_options) %><br>
+    <%= form_tag(github_user_path(:username), method: :delete) do %>
+        <%= label_tag :username, "Delete Repos via Username" %><br>
+        <div class="input-field col s12 m6">
+            <%= select_tag :username, options_for_select(username_options), class: "icons" %>
+        </div>
+
         
         <%= submit_tag("Delete User Repos", class: "waves-effect waves-light btn") %>
     <% end %>
-
     
 
     <br><br>
@@ -22,12 +25,15 @@
                 <div class="col s12 m6">
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <span class="card-title"><%= link_to(github_user.username, github_user_github_repos_path(github_user.username), class: "white-text") %> | <%= github_user.location %></span>
+                            <span class="card-title">
+                                <%= link_to(github_user.username, github_user_github_repos_path(github_user.username), class: "white-text") %> | <%= github_user.location %>
+                                <img src="<%= github_user.avatar_url %>" alt="Avatar" style="float: right; width: 50px; height: 50px; border-radius: 5%;">
+                            </span>
                             <% if not github_user.description.blank? %>
                                 <p><%= github_user.description %></p>
                             <% end %>
-                            </div>
-                            <div class="card-action">
+                        </div>
+                        <div class="card-action">
                             <% github_user.github_repos.order('LOWER(repo) ASC').each do |repo| %>
                                 <%= link_to(repo.repo, github_user_github_repo_path(github_user.username, repo.repo)) %>
                             <% end %>
@@ -37,6 +43,12 @@
             </div>
         <% end %>
     <% end %>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+    </script>    
 </div>
 
 

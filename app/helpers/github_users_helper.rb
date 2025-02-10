@@ -5,7 +5,9 @@ module GithubUsersHelper
 
     def username_options
         GithubUser.select(:username).distinct.map do |github_user|
-            [github_user.username, github_user.username]
+            # ask why github_user.avatar_url is not working
+
+            [github_user.username, github_user.username, { "data-icon" => GithubUser.find_by(username: github_user.username).avatar_url }]
         end
     end
 end

@@ -10,12 +10,12 @@ class GithubUsersController < ApplicationController
     def create
         GithubManager.process(params[:username])
 
-        redirect_to github_path
+        redirect_to github_users_path
     end
 
     def destroy
         GithubUser.where(username: params[:username]).delete_all if params[:username].present?
-        redirect_to github_path
+        redirect_to github_users_path
     end
 end
 

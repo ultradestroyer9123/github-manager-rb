@@ -37,7 +37,7 @@ class GithubManager
             @github_user = GithubUser.find(username: @username)
         else
             userInfo = @client.user(@username)
-            @github_user = GithubUser.create(username: @username, description: userInfo[:bio], location: userInfo[:location] || "Location Not Set")
+            @github_user = GithubUser.create(username: @username, description: userInfo[:bio], location: userInfo[:location] || "Location Not Set", avatar_url: userInfo[:avatar_url])
         end
     end
 
