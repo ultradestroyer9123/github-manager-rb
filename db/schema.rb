@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_10_042141) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_11_033452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "duck_duck_go_results", force: :cascade do |t|
+    t.bigint "duck_duck_go_search_id"
+    t.string "title"
+    t.string "link"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["duck_duck_go_search_id"], name: "index_duck_duck_go_results_on_duck_duck_go_search_id"
+  end
+
+  create_table "duck_duck_go_searches", force: :cascade do |t|
+    t.string "query"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "github_repos", force: :cascade do |t|
     t.integer "github_user_id"

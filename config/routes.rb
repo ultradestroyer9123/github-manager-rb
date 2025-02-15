@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :github_repos, only: %i[index show]
   end
   resource  :login, controller: :login, only: %i[show create destroy] # [:show, :create]
+  resources :scrapers, only: %i[index show create destroy]
   #                    dont create the plural
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,10 @@
+/*
+* THis is a manifest file that'll be compiled into application.css, which will include all the files listed below.
+* 
+*= require_tree .
+*= require_self
+*/
+
+.font-weight-bold {
+  font-weight: bold;
+}

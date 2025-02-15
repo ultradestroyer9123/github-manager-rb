@@ -21,6 +21,9 @@ gem 'octokit'
 # Http.rb
 gem "http"
 
+# json
+gem "json"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt"
 
@@ -46,6 +49,11 @@ gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
+
+# URI and NokoGiri and HTTParty
+gem "uri"
+gem "nokogiri"
+gem "httparty"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
